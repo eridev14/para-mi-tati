@@ -80,7 +80,7 @@ btn.addEventListener('click', () => {
 })
 
 async function getFrases() {
-    let response = await fetch('./frases.json');
+    let response = await fetch('frases.json');
     let json = await response.json();
     return json.frases
 }
