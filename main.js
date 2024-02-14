@@ -1,3 +1,4 @@
+import jsonArr from './frases.json'
 
 const hearts = [
     [0, 1, 1, 0, 0, 0, 1, 1, 0],
@@ -33,25 +34,24 @@ function generateHeart() {
 }
 
 const btn = document.querySelector('.btn');
+
 btn.addEventListener('click', () => {
-    generateHeart()
-    let fr;
-    const frasesLove = getFrases();
-    frasesLove.then(arr => {
-        fr = arr;
-    });
+    generateHeart();
     btn.hidden = true;
-    const arrItems = document.querySelectorAll('.heart__item')
-    let arr = Array.from(arrItems);
-    arr.map((item) => {
+    const arrItems = document.querySelectorAll('.heart__item');
+    const arr = Array.from(arrItems)
+    console.log(arr);
+
+    arr.forEach((item) => {
+        console.log(item);
         let div;
-        item.addEventListener('mouseenter', (e) => {
+        item.addEventListener('mouseenter', () => {
             let idItem = item.getAttribute('data-id')
             div = document.createElement('div');
             div.className = 'message'
             div.innerHTML = `
                 <span>
-                    ${fr[idItem]}
+                    ${jsonArr.frases[idItem]}
                 </span>
                 <img src="./pngwing.com.png" alt="obeja">
             `
@@ -79,11 +79,11 @@ btn.addEventListener('click', () => {
     })
 })
 
-async function getFrases() {
-    let response = await fetch('./public/frases.json');
-    let json = await response.json();
-    return json.frases
-}
+// async function getFrases() {
+//     let response = await fetch('/public/frases.json');
+//     let json = await response.json();
+//     return json.frases
+// }
 
 
 
