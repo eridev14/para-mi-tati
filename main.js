@@ -34,11 +34,9 @@ function generateHeart() {
 }
 
 const btn = document.querySelector('.btn');
-const audio = document.getElementById('miAudio');
 
 
 btn.addEventListener('click', () => {
-    audio.play();
     generateHeart();
     btn.hidden = true;
     const arrItems = document.querySelectorAll('.heart__item');
